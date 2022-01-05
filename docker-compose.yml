@@ -1,0 +1,15 @@
+---
+version: '3'
+
+services:
+  slackgif:
+    image: slackgif:latest
+    hostname: slackgif
+    container_name: slackgif
+    environment:
+      - GIS_API_KEY
+      - GIS_PROGSEARCH_ENGINE_ID
+      - SLACK_SIGNING_SECRETS
+    ports:
+        - 5001:80
+        - 5002:443
