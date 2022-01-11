@@ -113,7 +113,7 @@ def get_image(querystring, count):
     if count > 1:
         index = randint(0, len(results) - 1)
     else:
-        index = 1
+        index = 0
 
     return results[index].url
 
