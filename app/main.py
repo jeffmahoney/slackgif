@@ -54,7 +54,7 @@ def verify_request(request):
     if not app.config['PERFORM_SIGNING']:
         return
 
-    if request.content_length > 100 * 1024:
+    if request.method == 'POST' and request.content_length > 100 * 1024:
         raise SignatureError(f"Request too long: {request.content_length} bytes.")
 
     request_body = request.get_data().decode()
