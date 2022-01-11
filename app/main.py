@@ -141,7 +141,7 @@ def slackgif():
         text = qv['text']
 
         cmd = qv['command']
-        if cmd == "newgif" or cmd == "gif":
+        if cmd == "/newgif" or cmd == "/gif":
             count = 1
         else:
             count = 5
