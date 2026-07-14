@@ -7,10 +7,10 @@ import sys
 import time
 
 from random import randint
+from http import HTTPStatus
 
 from google_images_search import GoogleImagesSearch
 from flask import Flask, render_template, request, jsonify, Response
-from flask_api import status
 
 app=Flask(__name__)
 
@@ -122,7 +122,7 @@ def home():
     try:
         verify_request(request)
     except SignatureError as e:
-        return Response(str(e), status.HTTP_403_FORBIDDEN)
+        return Response(str(e), HTTPStatus.FORBIDDEN)
     return render_template('index.html')
 
 @app.route('/slackgif', methods=['GET', 'POST'])
@@ -130,7 +130,7 @@ def slackgif():
     try:
         verify_request(request)
     except SignatureError as e:
-        return Response(str(e), status.HTTP_403_FORBIDDEN)
+        return Response(str(e), HTTPStatus.FORBIDDEN)
 
     try:
         if request.method == 'GET':
@@ -161,7 +161,7 @@ def giftest():
     try:
         verify_request(request)
     except SignatureError as e:
-        return Response(str(e), status.HTTP_403_FORBIDDEN)
+        return Response(str(e), HTTPStatus.FORBIDDEN)
     try:
         if request.method == 'GET':
             qv = request.args
