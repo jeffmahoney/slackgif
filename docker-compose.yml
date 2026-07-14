@@ -16,3 +16,4 @@ services:
     ports:
         - 5001:80
         - 5002:443
+    restart: unless-stopped
